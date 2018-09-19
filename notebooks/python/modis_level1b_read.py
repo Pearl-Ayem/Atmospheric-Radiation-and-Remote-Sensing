@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # <h1>Table of Contents<span class="tocSkip"></span></h1>
-# <div class="toc"><ul class="toc-item"><li><span><a href="#Introduction" data-toc-modified-id="Introduction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Introduction</a></span></li><li><span><a href="#Reading-modis-data" data-toc-modified-id="Reading-modis-data-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Reading modis data</a></span><ul class="toc-item"><li><span><a href="#Installing-pyhdf" data-toc-modified-id="Installing-pyhdf-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Installing pyhdf</a></span></li><li><span><a href="#Downloading-the-data-and-reading-the-file" data-toc-modified-id="Downloading-the-data-and-reading-the-file-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Downloading the data and reading the file</a></span></li><li><span><a href="#Navigating-the-file-system" data-toc-modified-id="Navigating-the-file-system-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Navigating the file system</a></span></li><li><span><a href="#Using-pydf-to-get-metadata" data-toc-modified-id="Using-pydf-to-get-metadata-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Using pydf to get metadata</a></span></li><li><span><a href="#Find-all-the-datasets-using-pyhdf.SD.datasets()" data-toc-modified-id="Find-all-the-datasets-using-pyhdf.SD.datasets()-2.5"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Find all the datasets using pyhdf.SD.datasets()</a></span></li><li><span><a href="#open-one-of-the-datasets-(number-4,-EV_1KM_Emissive)-and-get-its-shape-and-data-type" data-toc-modified-id="open-one-of-the-datasets-(number-4,-EV_1KM_Emissive)-and-get-its-shape-and-data-type-2.6"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>open one of the datasets (number 4, EV_1KM_Emissive) and get its shape and data type</a></span></li><li><span><a href="#Get-the-first-row-of-the-first-channel-and-find-its-numpy-dtype" data-toc-modified-id="Get-the-first-row-of-the-first-channel-and-find-its-numpy-dtype-2.7"><span class="toc-item-num">2.7&nbsp;&nbsp;</span>Get the first row of the first channel and find its numpy dtype</a></span></li><li><span><a href="#get-all-the-rows-and-columns-for-the-first-channel" data-toc-modified-id="get-all-the-rows-and-columns-for-the-first-channel-2.8"><span class="toc-item-num">2.8&nbsp;&nbsp;</span>get all the rows and columns for the first channel</a></span></li><li><span><a href="#Find-the-attributes-for-EV_1KM_Emissive" data-toc-modified-id="Find-the-attributes-for-EV_1KM_Emissive-2.9"><span class="toc-item-num">2.9&nbsp;&nbsp;</span>Find the attributes for EV_1KM_Emissive</a></span></li><li><span><a href="#Print-the-first-1000-characters-of-the-Metadata.0-string" data-toc-modified-id="Print-the-first-1000-characters-of-the-Metadata.0-string-2.10"><span class="toc-item-num">2.10&nbsp;&nbsp;</span>Print the first 1000 characters of the Metadata.0 string</a></span></li></ul></li><li><span><a href="#Now-plot-the-data-using-imshow" data-toc-modified-id="Now-plot-the-data-using-imshow-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Now plot the data using imshow</a></span><ul class="toc-item"><li><span><a href="#find-the-index-for-channel-30" data-toc-modified-id="find-the-index-for-channel-30-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>find the index for channel 30</a></span></li><li><span><a href="#Let-python-figure-this-out" data-toc-modified-id="Let-python-figure-this-out-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Let python figure this out</a></span></li><li><span><a href="#Read-channel-30-at-index-9-into-a-numpy-array-of-type-uint16" data-toc-modified-id="Read-channel-30-at-index-9-into-a-numpy-array-of-type-uint16-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Read channel 30 at index 9 into a numpy array of type uint16</a></span></li><li><span><a href="#Plot-the-channel-30-image" data-toc-modified-id="Plot-the-channel-30-image-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Plot the channel 30 image</a></span></li></ul></li><li><span><a href="#For-Wednesday-(don't-need-to-hand-in)" data-toc-modified-id="For-Wednesday-(don't-need-to-hand-in)-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>For Wednesday (don't need to hand in)</a></span></li></ul></div>
+# <div class="toc"><ul class="toc-item"><li><span><a href="#Introduction" data-toc-modified-id="Introduction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Introduction</a></span></li><li><span><a href="#Reading-modis-data" data-toc-modified-id="Reading-modis-data-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Reading modis data</a></span><ul class="toc-item"><li><span><a href="#Installing-pyhdf" data-toc-modified-id="Installing-pyhdf-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Installing pyhdf</a></span></li><li><span><a href="#Downloading-the-data-and-reading-the-file" data-toc-modified-id="Downloading-the-data-and-reading-the-file-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Downloading the data and reading the file</a></span></li><li><span><a href="#Navigating-the-file-system" data-toc-modified-id="Navigating-the-file-system-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Navigating the file system</a></span></li><li><span><a href="#Using-pydf-to-get-metadata" data-toc-modified-id="Using-pydf-to-get-metadata-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Using pydf to get metadata</a></span></li><li><span><a href="#Find-all-the-datasets-using-pyhdf.SD.datasets()" data-toc-modified-id="Find-all-the-datasets-using-pyhdf.SD.datasets()-2.5"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Find all the datasets using pyhdf.SD.datasets()</a></span></li><li><span><a href="#open-one-of-the-datasets-(number-4,-EV_1KM_Emissive)-and-get-its-shape-and-data-type" data-toc-modified-id="open-one-of-the-datasets-(number-4,-EV_1KM_Emissive)-and-get-its-shape-and-data-type-2.6"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>open one of the datasets (number 4, EV_1KM_Emissive) and get its shape and data type</a></span></li><li><span><a href="#Get-the-first-row-of-the-first-channel-and-find-its-numpy-dtype" data-toc-modified-id="Get-the-first-row-of-the-first-channel-and-find-its-numpy-dtype-2.7"><span class="toc-item-num">2.7&nbsp;&nbsp;</span>Get the first row of the first channel and find its numpy dtype</a></span></li><li><span><a href="#get-all-the-rows-and-columns-for-the-first-channel" data-toc-modified-id="get-all-the-rows-and-columns-for-the-first-channel-2.8"><span class="toc-item-num">2.8&nbsp;&nbsp;</span>get all the rows and columns for the first channel</a></span></li><li><span><a href="#Find-the-attributes-for-EV_1KM_Emissive" data-toc-modified-id="Find-the-attributes-for-EV_1KM_Emissive-2.9"><span class="toc-item-num">2.9&nbsp;&nbsp;</span>Find the attributes for EV_1KM_Emissive</a></span></li><li><span><a href="#Print-the-first-1000-characters-of-the-Metadata.0-string" data-toc-modified-id="Print-the-first-1000-characters-of-the-Metadata.0-string-2.10"><span class="toc-item-num">2.10&nbsp;&nbsp;</span>Print the first 1000 characters of the Metadata.0 string</a></span></li></ul></li><li><span><a href="#Now-plot-the-data-using-imshow" data-toc-modified-id="Now-plot-the-data-using-imshow-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Now plot the data using imshow</a></span><ul class="toc-item"><li><span><a href="#find-the-index-for-channel-30" data-toc-modified-id="find-the-index-for-channel-30-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>find the index for channel 30</a></span></li><li><span><a href="#Let-python-figure-this-out" data-toc-modified-id="Let-python-figure-this-out-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Let python figure this out</a></span></li><li><span><a href="#Read-channel-30-at-index-9-into-a-numpy-array-of-type-uint16" data-toc-modified-id="Read-channel-30-at-index-9-into-a-numpy-array-of-type-uint16-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Read channel 30 at index 9 into a numpy array of type uint16</a></span></li><li><span><a href="#Plot-the-channel-30-image" data-toc-modified-id="Plot-the-channel-30-image-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Plot the channel 30 image</a></span></li></ul></li><li><span><a href="#For-Wednesday-(don't-need-to-hand-in)" data-toc-modified-id="For-Wednesday-(don't-need-to-hand-in)-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>For Wednesday (don't need to hand in)</a></span></li><li><span><a href="#Write-the-calibrated-channel-out-for-safekeeping" data-toc-modified-id="Write-the-calibrated-channel-out-for-safekeeping-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Write the calibrated channel out for safekeeping</a></span></li><li><span><a href="#Move-the-file-to-data_dir" data-toc-modified-id="Move-the-file-to-data_dir-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Move the file to data_dir</a></span></li></ul></div>
 
 # In[1]:
 
@@ -70,8 +70,8 @@ if get_data:
 
 home = Path.home()
 print(home)
-downloads= home / Path("Downloads")
-print(downloads)
+data_dir = home / Path("Downloads")
+print(data_dir)
 
 
 # A better choice would be someplace within the a301 folder tree.  I know this notebook is
@@ -282,4 +282,71 @@ offsets=longwave_data.attributes()['radiance_offsets']
 ch30_scale=scales[ch30_index]
 ch30_offset=offsets[ch30_index]
 print(f'scale: {ch30_scale}, offset: {ch30_offset}')
+
+
+# In[24]:
+
+
+ch30_calibrated =(ch30_data - ch30_offset)*ch30_scale
+
+
+# In[29]:
+
+
+fig,ax = plt.subplots(1,1,figsize = (10,14))
+CS=ax.imshow(ch30_calibrated)
+cax=fig.colorbar(CS)
+ax.set_title('Channel 30 radiance')
+#
+# add a label to the colorbar and flip it around 270 degrees
+#
+out=cax.ax.set_ylabel('Chan radiance $(W\,m^{-2}\,\mu m^{-1}\,sr^{-1})$')
+out.set_verticalalignment('bottom')
+out.set_rotation(270)
+
+
+# # Write the calibrated channel out for safekeeping
+# 
+# Follow the example here: https://hdfeos.org/software/pyhdf.php
+
+# In[37]:
+
+
+# Create an HDF file
+outname="ch30_out.hdf"
+sd = SD(outname, SDC.WRITE | SDC.CREATE)
+
+# Create a dataset
+sds = sd.create("ch30", SDC.FLOAT64, ch30_calibrated.shape)
+
+# Fill the dataset with a fill value
+sds.setfillvalue(0)
+
+# Set dimension names
+dim1 = sds.dim(0)
+dim1.setname("row")
+dim2 = sds.dim(1)
+dim2.setname("col")
+
+# Assign an attribute to the dataset
+sds.units = "W/m^2/micron/sr"
+
+# Write data
+sds[:,:] = ch30_calibrated
+
+# Close the dataset
+sds.endaccess()
+
+# Flush and close the HDF file
+sd.end()
+
+
+# # Move the file to data_dir
+
+# In[38]:
+
+
+local_file = Path.cwd() / Path(outname)
+to_file = data_dir / Path(outname)
+local_file.rename(to_file)
 
