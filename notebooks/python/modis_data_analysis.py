@@ -4,12 +4,13 @@
 # <h1>Table of Contents<span class="tocSkip"></span></h1>
 # <div class="toc"><ul class="toc-item"><li><span><a href="#Introduction" data-toc-modified-id="Introduction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Introduction</a></span></li><li><span><a href="#Reading-the-geolocation-data" data-toc-modified-id="Reading-the-geolocation-data-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Reading the geolocation data</a></span></li><li><span><a href="#Check-the-metadata-with-hdf4ls" data-toc-modified-id="Check-the-metadata-with-hdf4ls-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Check the metadata with hdf4ls</a></span></li><li><span><a href="#Read-the-CoreMetadata.0-attribute-with-parseMeta" data-toc-modified-id="Read-the-CoreMetadata.0-attribute-with-parseMeta-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Read the CoreMetadata.0 attribute with parseMeta</a></span></li><li><span><a href="#Plotting-the-lats-and-lons" data-toc-modified-id="Plotting-the-lats-and-lons-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Plotting the lats and lons</a></span></li></ul></div>
 
-# In[14]:
+# In[1]:
 
 
 from pathlib import Path
 from pyhdf.SD import SD, SDC
 from matplotlib import pyplot as plt
+import context
 
 
 # # Introduction
@@ -30,7 +31,7 @@ from matplotlib import pyplot as plt
 # I downloaded a lat/lon MYD03 file from LAADSweb.  This contains the center lat and longitude
 # of every pixel at 1 km resolution.
 
-# In[26]:
+# In[8]:
 
 
 #Path.cwd finds the "current working directory", i.e. the directory holding this notebook.
@@ -39,6 +40,19 @@ this_dir=Path.cwd()
 data_dir = this_dir.parent / Path('data')
 hdf_files=list(data_dir.glob("MYD03*2110*.hdf"))
 print(hdf_files)
+
+
+# In[11]:
+
+
+read_data=True
+if read_data:
+    filename="MYD03.A2013222.2105.006.2013223155808.hdf"
+    from a301.utils.data_read import download
+    download(filename)
+    local_file = Path.cwd() / Path(filename)
+    to_file = data_dir / Path(filename)
+    local_file.rename(to_file)
 
 
 # # Check the metadata with hdf4ls
