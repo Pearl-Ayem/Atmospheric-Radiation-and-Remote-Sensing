@@ -7,9 +7,6 @@ __version__ = a301.__version__
 
 from setuptools import setup, find_packages
 
-#version_file = open(os.path.join('e340py', 'version'))
-#version = version_file.read().strip()
-
 setup(
     name = "a301",
     packages=find_packages(),

@@ -31,7 +31,7 @@ import context
 # I downloaded a lat/lon MYD03 file from LAADSweb.  This contains the center lat and longitude
 # of every pixel at 1 km resolution.
 
-# In[8]:
+# In[2]:
 
 
 #Path.cwd finds the "current working directory", i.e. the directory holding this notebook.
@@ -42,7 +42,7 @@ hdf_files=list(data_dir.glob("MYD03*2110*.hdf"))
 print(hdf_files)
 
 
-# In[11]:
+# In[3]:
 
 
 read_data=True
@@ -57,14 +57,14 @@ if read_data:
 
 # # Check the metadata with hdf4ls
 
-# In[3]:
+# In[4]:
 
 
 from a301.scripts.hdf4ls import hdf4ls
 help(hdf4ls)
 
 
-# In[4]:
+# In[5]:
 
 
 hdf4ls(hdf_files[0])
@@ -72,14 +72,14 @@ hdf4ls(hdf_files[0])
 
 # # Read the CoreMetadata.0 attribute with parseMeta
 
-# In[5]:
+# In[6]:
 
 
 from a301.scripts.modismeta_read import parseMeta
 help(parseMeta)
 
 
-# In[6]:
+# In[7]:
 
 
 parseMeta(hdf_files[0])
@@ -87,7 +87,7 @@ parseMeta(hdf_files[0])
 
 # # Plotting the lats and lons
 
-# In[16]:
+# In[8]:
 
 
 the_file = SD(str(hdf_files[0]), SDC.READ)
@@ -95,7 +95,7 @@ lat_data = the_file.select('Latitude')
 lon_data = the_file.select('Longitude')
 
 
-# In[24]:
+# In[9]:
 
 
 fig,ax = plt.subplots(1,1,figsize = (10,14))

@@ -258,6 +258,7 @@ ax.set_title('uncalibrated counts')
 out=cax.ax.set_ylabel('Chan 30 raw counts')
 out.set_verticalalignment('bottom')
 out.set_rotation(270)
+print(ch30_data.shape)
 
 
 # # For Wednesday (don't need to hand in)
@@ -284,13 +285,13 @@ ch30_offset=offsets[ch30_index]
 print(f'scale: {ch30_scale}, offset: {ch30_offset}')
 
 
-# In[24]:
+# In[20]:
 
 
 ch30_calibrated =(ch30_data - ch30_offset)*ch30_scale
 
 
-# In[29]:
+# In[21]:
 
 
 fig,ax = plt.subplots(1,1,figsize = (10,14))
@@ -309,7 +310,7 @@ out.set_rotation(270)
 # 
 # Follow the example here: https://hdfeos.org/software/pyhdf.php
 
-# In[37]:
+# In[24]:
 
 
 # Create an HDF file
@@ -341,9 +342,15 @@ sds.endaccess()
 sd.end()
 
 
+# In[26]:
+
+
+get_ipython().system('ls')
+
+
 # # Move the file to data_dir
 
-# In[38]:
+# In[23]:
 
 
 local_file = Path.cwd() / Path(outname)
